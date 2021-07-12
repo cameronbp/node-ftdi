@@ -170,7 +170,7 @@ class FindAllWorker : public Nan::AsyncWorker {
           Nan::Set(obj, Nan::New<String>(DEVICE_INDEX_TAG).ToLocalChecked(), Nan::New<Number>(i));
           Nan::Set(obj, Nan::New<String>(DEVICE_VENDOR_ID_TAG).ToLocalChecked(), Nan::New<Number>( (listBaton->devInfo[i].ID >> 16) & (0xFFFF)));
           Nan::Set(obj, Nan::New<String>(DEVICE_PRODUCT_ID_TAG).ToLocalChecked(), Nan::New<Number>( (listBaton->devInfo[i].ID) & (0xFFFF)));
-          array->Set(index++, obj);
+          Nan::Set(array, index++, obj);
         }
       }
 
