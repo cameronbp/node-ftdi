@@ -228,7 +228,7 @@ NAN_METHOD(FindAll) {
   return;
 }
 
-void InitializeList(Handle<Object> target)
+void InitializeList(Local<Object> target)
 {
   Local<FunctionTemplate> tpl = Nan::New<FunctionTemplate>();
   tpl->SetClassName(Nan::New<String>(JS_CLASS_NAME).ToLocalChecked());
