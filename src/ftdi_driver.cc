@@ -234,12 +234,12 @@ void InitializeList(Local<Object> target)
   tpl->SetClassName(Nan::New<String>(JS_CLASS_NAME).ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  tpl->Set(
+  Nan::Set(tpl,
       Nan::New<String>("findAll").ToLocalChecked()
     , Nan::New<FunctionTemplate>(FindAll)
   );
 
-  target->Set(Nan::New<String>(JS_CLASS_NAME).ToLocalChecked(), tpl->GetFunction());
+  Nan::Set(target, Nan::New<String>(JS_CLASS_NAME).ToLocalChecked(), tpl->GetFunction(Nan::GetCurrentContext()).FromJust());
 
   uv_mutex_init(&vidPidMutex);
 }

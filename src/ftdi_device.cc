@@ -87,7 +87,7 @@ NAN_METHOD(FtdiDevice::New) {
   FtdiDevice* object = new FtdiDevice();
 
   // Check if the argument is an object
-  if(info[0]->IsObject())
+  if(info[0]->IsObject(Nan::GetCurrentContext()).FromJust())
   {
     Local<Object> obj = info[0]->ToObject();
 
@@ -99,7 +99,7 @@ NAN_METHOD(FtdiDevice::New) {
      *   4) By index
      * In this order we check for availability of the parameter and the first valid we found is taken
      */
-    if(obj->Has(locationId) && obj->Get(locationId)->Int32Value() != 0)
+    if(Nan::Has(obj, locationId) && Nan::Get(obj, locationId)->Int32Value() != 0)
     {
       object->connectParams.connectId = obj->Get(locationId)->Int32Value();
       object->connectParams.connectType = ConnectType_ByLocationId;
