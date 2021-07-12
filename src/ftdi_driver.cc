@@ -164,12 +164,12 @@ class FindAllWorker : public Nan::AsyncWorker {
         if(DeviceMatchesFilterCriteria(&listBaton->devInfo[i], vid, pid))
         {
           Local<Object> obj = Nan::New<Object>();
-          obj->Set(Nan::New<String>(DEVICE_DESCRIPTION_TAG).ToLocalChecked(), Nan::New<String>(listBaton->devInfo[i].Description).ToLocalChecked());
-          obj->Set(Nan::New<String>(DEVICE_SERIAL_NR_TAG).ToLocalChecked(), Nan::New<String>(listBaton->devInfo[i].SerialNumber).ToLocalChecked());
-          obj->Set(Nan::New<String>(DEVICE_LOCATION_ID_TAG).ToLocalChecked(), Nan::New<Number>(listBaton->devInfo[i].LocId));
-          obj->Set(Nan::New<String>(DEVICE_INDEX_TAG).ToLocalChecked(), Nan::New<Number>(i));
-          obj->Set(Nan::New<String>(DEVICE_VENDOR_ID_TAG).ToLocalChecked(), Nan::New<Number>( (listBaton->devInfo[i].ID >> 16) & (0xFFFF)));
-          obj->Set(Nan::New<String>(DEVICE_PRODUCT_ID_TAG).ToLocalChecked(), Nan::New<Number>( (listBaton->devInfo[i].ID) & (0xFFFF)));
+          obj->handle()->Set(Nan::New<String>(DEVICE_DESCRIPTION_TAG).ToLocalChecked(), Nan::New<String>(listBaton->devInfo[i].Description).ToLocalChecked());
+          obj->handle()->Set(Nan::New<String>(DEVICE_SERIAL_NR_TAG).ToLocalChecked(), Nan::New<String>(listBaton->devInfo[i].SerialNumber).ToLocalChecked());
+          obj->handle()->Set(Nan::New<String>(DEVICE_LOCATION_ID_TAG).ToLocalChecked(), Nan::New<Number>(listBaton->devInfo[i].LocId));
+          obj->handle()->Set(Nan::New<String>(DEVICE_INDEX_TAG).ToLocalChecked(), Nan::New<Number>(i));
+          obj->handle()->Set(Nan::New<String>(DEVICE_VENDOR_ID_TAG).ToLocalChecked(), Nan::New<Number>( (listBaton->devInfo[i].ID >> 16) & (0xFFFF)));
+          obj->handle()->Set(Nan::New<String>(DEVICE_PRODUCT_ID_TAG).ToLocalChecked(), Nan::New<Number>( (listBaton->devInfo[i].ID) & (0xFFFF)));
           array->Set(index++, obj);
         }
       }
