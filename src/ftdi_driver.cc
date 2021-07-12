@@ -212,8 +212,8 @@ NAN_METHOD(FindAll) {
   }
   if (info[0]->IsNumber() && info[1]->IsNumber())
   {
-    vid = (int) info[0]->NumberValue();
-    pid = (int) info[1]->NumberValue();
+    vid = (int) info[0]->NumberValue(Nan::GetCurrentContext()).FromJust();
+    pid = (int) info[1]->NumberValue(Nan::GetCurrentContext()).FromJust();
   }
 
   // callback
